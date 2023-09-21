@@ -1,42 +1,37 @@
 import React from "react";
 
-const Part = ({ part, exercises }) => {
-  return (
-    <p>
-      {part} {exercises}
-    </p>
-  );
-};
-
-const Content = ({ parts }) => {
+const Hello = (props) => {
   return (
     <div>
-      {parts.map((part, index) => (
-        <Part key={index} part={part.name} exercises={part.exercises} />
-      ))}
+      <p>
+        Hello {props.name}, you are {props.age} years old
+      </p>
     </div>
   );
 };
 
-const Total = ({ parts }) => {
-  const totalExercises = parts.reduce((sum, part) => sum + part.exercises, 0);
-
-  return <p>Number of exercises {totalExercises}</p>;
+const Footer = () => {
+  return (
+    <div>
+      greeting app created by <a href="https://github.com/mluukkai">mluukkai</a>
+    </div>
+  );
 };
 
 const App = () => {
-  const course = "Half Stack application development";
-  const parts = [
-    { name: "Fundamentals of React", exercises: 10 },
-    { name: "Using props to pass data", exercises: 7 },
-    { name: "State of a component", exercises: 14 },
+  const friends = [
+    { name: "Leevi", age: 4 },
+    { name: "Venla", age: 10 },
   ];
 
   return (
     <div>
-      <h1>{course}</h1>
-      <Content parts={parts} />
-      <Total parts={parts} />
+      <p>
+        {friends[0].name} {friends[0].age}
+      </p>
+      <p>
+        {friends[1].name} {friends[1].age}
+      </p>
     </div>
   );
 };
