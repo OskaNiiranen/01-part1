@@ -1,33 +1,42 @@
 import React from "react";
 
-const Hello = (props) => {
+const Part = ({ part, exercises }) => {
+  return (
+    <p>
+      {part} {exercises}
+    </p>
+  );
+};
+
+const Content = ({ parts }) => {
   return (
     <div>
-      <p>
-        Hello {props.name}, you are {props.age} years old
-      </p>
+      {parts.map((part, index) => (
+        <Part key={index} part={part.name} exercises={part.exercises} />
+      ))}
     </div>
   );
 };
 
-const Footer = () => {
-  return (
-    <div>
-      greeting app created by <a href="https://github.com/mluukkai">mluukkai</a>
-    </div>
-  );
+const Total = ({ parts }) => {
+  const totalExercises = parts.reduce((sum, part) => sum + part.exercises, 0);
+
+  return <p>Number of exercises {totalExercises}</p>;
 };
 
 const App = () => {
-  const nimi = "Pekka";
-  const ika = 10;
+  const course = "Half Stack application development";
+  const parts = [
+    { name: "Fundamentals of React", exercises: 10 },
+    { name: "Using props to pass data", exercises: 7 },
+    { name: "State of a component", exercises: 14 },
+  ];
 
   return (
     <div>
-      <h1>Greetings</h1>
-      <Hello name="Maya" age={26 + 10} />
-      <Hello name={nimi} age={ika} />
-      <Footer /> {/* Lisää Footer-komponentti suoraan tähän */}
+      <h1>{course}</h1>
+      <Content parts={parts} />
+      <Total parts={parts} />
     </div>
   );
 };
