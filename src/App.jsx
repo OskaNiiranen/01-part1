@@ -1,19 +1,22 @@
-const Hello = () => {
+import React from "react";
+
+const Hello = (props) => {
   return (
     <div>
-      <p>Hello world</p>
+      {props.names.map((name, index) => (
+        <p key={index}>Hello {name}</p>
+      ))}
     </div>
   );
 };
 
 const App = () => {
+  const names = ["Maya", "Pekka", "John", "Alice", "Oska"]; // Voit lisätä haluamiasi nimiä tähän
+
   return (
     <div>
       <h1>Greetings</h1>
-
-      <Hello />
-      <Hello />
-      <Hello />
+      <Hello names={names} />
     </div>
   );
 };
