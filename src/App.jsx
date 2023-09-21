@@ -1,22 +1,25 @@
 import React from "react";
 
 const Hello = (props) => {
+  console.log(props);
   return (
     <div>
-      {props.names.map((name, index) => (
-        <p key={index}>Hello {name}</p>
-      ))}
+      <p>
+        Hello {props.name}, you are {props.age} years old
+      </p>
     </div>
   );
 };
 
 const App = () => {
-  const names = ["Maya", "Pekka", "John", "Alice", "Oska"]; // Voit lisätä haluamiasi nimiä tähän
+  const nimi = "Pekka";
+  const ika = 10;
 
   return (
     <div>
       <h1>Greetings</h1>
-      <Hello names={names} />
+      <Hello name="Maya" age={26 + 10} />
+      <Hello name={nimi} age={ika} />
     </div>
   );
 };
